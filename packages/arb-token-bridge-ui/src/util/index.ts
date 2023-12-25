@@ -54,5 +54,5 @@ export const getAPIBaseUrl = () => {
   // Resolves: next-js-error-only-absolute-urls-are-supported in test:ci
   return process.env.NODE_ENV === 'test'
     ? 'http://localhost:3000'
-    : 'https://bridge.api.inspace.network'
+    : 'https://api.inspace.network'
 }
