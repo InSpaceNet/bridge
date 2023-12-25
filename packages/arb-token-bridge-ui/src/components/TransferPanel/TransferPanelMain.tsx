@@ -298,7 +298,6 @@ function TokenBalance({
   tokenSymbolOverride?: string
 }) {
   const { l1, l2 } = useNetworksAndSigners()
-  console.debug('fuck l1, l2', l1.network.name, l2.network.name)
   const isParentChain = on === NetworkType.l1
   const chain = isParentChain ? l1.network : l2.network
 
