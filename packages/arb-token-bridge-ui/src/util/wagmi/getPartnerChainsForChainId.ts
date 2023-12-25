@@ -7,7 +7,7 @@ import {
   arbitrumGoerli
 } from 'wagmi/chains'
 
-import { ChainId, getCustomChainsFromLocalStorage, inspace } from '../networks'
+import { ChainId, getCustomChainsFromLocalStorage } from '../networks'
 import {
   arbitrumNova,
   arbitrumSepolia,

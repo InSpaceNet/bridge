@@ -9,7 +9,7 @@ module.exports = {
   productionBrowserSourceMaps: true,
   reactStrictMode: true,
   images: {
-      unoptimized: true
+    unoptimized: true
   },
   webpack: (config, { isServer, dev }) => {
     if (dev && !isServer) {
