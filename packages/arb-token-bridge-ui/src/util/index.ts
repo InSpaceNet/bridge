@@ -52,5 +52,7 @@ export const sanitizeQueryParams = (data: any) => {
 export const getAPIBaseUrl = () => {
   // if dev environment, eg. tests, then prepend actual running environment
   // Resolves: next-js-error-only-absolute-urls-are-supported in test:ci
-  return process.env.NODE_ENV === 'test' ? 'http://localhost:3000' : ''
+  return process.env.NODE_ENV === 'test'
+    ? 'http://localhost:3000'
+    : 'https://bridge.api.inspace.network'
 }
