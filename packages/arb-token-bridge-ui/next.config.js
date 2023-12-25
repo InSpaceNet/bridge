@@ -8,7 +8,9 @@ module.exports = {
   distDir: 'build',
   productionBrowserSourceMaps: true,
   reactStrictMode: true,
-
+  images: {
+      unoptimized: true
+  },
   webpack: (config, { isServer, dev }) => {
     if (dev && !isServer) {
       config.watchOptions = {

@@ -5,3 +5,5 @@ build:
 	yarn build
 dev:
 	yarn dev
+export:
+	yarn export
