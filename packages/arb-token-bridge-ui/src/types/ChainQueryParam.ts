@@ -70,7 +70,7 @@ export function getChainQueryParamForChain(chainId: ChainId): ChainQueryParam {
     case ChainId.ArbitrumLocal:
       return 'arbitrum-local'
 
-    case ChainId.InSpace:
+    case ChainId.Inspace:
       return 'inspace-network'
 
     default:
@@ -121,7 +121,7 @@ export function getChainForChainKeyQueryParam(
       return customChains.xaiTestnet
 
     case 'inspace-network':
-      return customChains.inSpace
+      return customChains.inspace
 
     case 'local':
       return customChains.localL1Network

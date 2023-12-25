@@ -94,17 +94,17 @@ export const xaiTestnet: Chain = {
   }
 }
 
-export const inSpace: Chain = {
-  id: ChainId.InSpace,
-  name: 'InSpace Network',
+export const inspace: Chain = {
+  id: ChainId.Inspace,
+  name: 'Inspace Network',
   network: 'inspace-network',
   nativeCurrency: ether,
   rpcUrls: {
     default: {
-      http: [rpcURLs[ChainId.InSpace]!]
+      http: [rpcURLs[ChainId.Inspace]!]
     },
     public: {
-      http: [rpcURLs[ChainId.InSpace]!]
+      http: [rpcURLs[ChainId.Inspace]!]
     }
   },
   blockExplorers: {

@@ -15,10 +15,10 @@ export function useStyles() {
       isXaiTestnet,
       isStylusTestnet,
       isOrbitChain,
-      isInSpace
+      isInspace
     } = isNetwork(l2Network.id)
 
-    if (isInSpace) {
+    if (isInspace) {
       return 'bg-xai-dark'
     }
 

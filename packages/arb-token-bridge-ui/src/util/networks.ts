@@ -100,7 +100,7 @@ export function getL2ChainIds(l1ChainId: number): ChainId[] {
   // Ethereum as the parent chain
   switch (l1ChainId) {
     case ChainId.Ethereum:
-      return [ChainId.ArbitrumOne, ChainId.InSpace]
+      return [ChainId.ArbitrumOne, ChainId.Inspace]
     case ChainId.Goerli:
       return [
         ChainId.ArbitrumGoerli,
@@ -156,7 +156,7 @@ export enum ChainId {
   XaiTestnet = 47279324479,
   StylusTestnet = 23011913,
 
-  InSpace = 2024
+  Inspace = 2024
 }
 
 export const supportedCustomOrbitParentChains = [
@@ -189,7 +189,7 @@ export const rpcURLs: { [chainId: number]: string } = {
   [ChainId.XaiTestnet]: 'https://testnet.xai-chain.net/rpc',
   [ChainId.StylusTestnet]: 'https://stylus-testnet.arbitrum.io/rpc',
 
-  [ChainId.InSpace]: 'https://rpc1.inspace.network'
+  [ChainId.Inspace]: 'https://rpc1.inspace.network'
 }
 
 export const explorerUrls: { [chainId: number]: string } = {
@@ -208,7 +208,7 @@ export const explorerUrls: { [chainId: number]: string } = {
   [ChainId.XaiTestnet]: 'https://testnet-explorer.xai-chain.net',
   [ChainId.StylusTestnet]: 'https://stylus-testnet-explorer.arbitrum.io',
 
-  [ChainId.InSpace]: 'https://scan.inspace.network'
+  [ChainId.Inspace]: 'https://scan.inspace.network'
 }
 
 export const getExplorerUrl = (chainId: ChainId) => {
@@ -262,7 +262,7 @@ export const chainIdToDefaultL2ChainId: { [chainId: number]: ChainId[] } = {
   [ChainId.Goerli]: [ChainId.ArbitrumGoerli],
   [ChainId.Sepolia]: [ChainId.ArbitrumSepolia],
   // L2
-  [ChainId.ArbitrumOne]: [ChainId.ArbitrumOne, ChainId.InSpace],
+  [ChainId.ArbitrumOne]: [ChainId.ArbitrumOne, ChainId.Inspace],
   [ChainId.ArbitrumNova]: [ChainId.ArbitrumNova],
   // L2 Testnets
   [ChainId.ArbitrumGoerli]: [ChainId.ArbitrumGoerli, ChainId.XaiTestnet],
@@ -271,7 +271,7 @@ export const chainIdToDefaultL2ChainId: { [chainId: number]: ChainId[] } = {
   [ChainId.XaiTestnet]: [ChainId.XaiTestnet],
   [ChainId.StylusTestnet]: [ChainId.StylusTestnet],
 
-  [ChainId.InSpace]: [ChainId.InSpace]
+  [ChainId.Inspace]: [ChainId.Inspace]
 }
 
 const defaultL1Network: L1Network = {
@@ -441,7 +441,7 @@ export function registerLocalNetwork(
 }
 
 export function isNetwork(chainId: ChainId) {
-  const isInSpace = chainId == ChainId.InSpace
+  const isInspace = chainId == ChainId.Inspace
 
   const customChains = getCustomChainsFromLocalStorage()
   const isEthereumMainnet = chainId === ChainId.Ethereum
@@ -491,7 +491,7 @@ export function isNetwork(chainId: ChainId) {
     isSepolia ||
     isArbitrumSepolia ||
     isStylusTestnet ||
-    isInSpace ||
+    isInspace ||
     isXaiTestnet // is network supported on bridge
 
   return {
@@ -514,7 +514,7 @@ export function isNetwork(chainId: ChainId) {
     isStylusTestnet,
     // Testnet
     isTestnet,
-    isInSpace,
+    isInspace,
     // General
     isSupported
   }
@@ -561,8 +561,8 @@ export function getNetworkName(chainId: number) {
     case ChainId.StylusTestnet:
       return 'Stylus Testnet'
 
-    case ChainId.InSpace:
-      return 'InSpace Network'
+    case ChainId.Inspace:
+      return 'Inspace Network'
 
     default:
       return 'Unknown'
@@ -598,7 +598,7 @@ export function getNetworkLogo(
     case ChainId.StylusTestnet:
       return '/images/StylusLogo.svg'
 
-    case ChainId.InSpace:
+    case ChainId.Inspace:
       return '/images/InspaceLogo.svg'
 
     default:
@@ -630,7 +630,7 @@ export function getSupportedNetworks(chainId = 0, includeTestnets = false) {
     ChainId.Ethereum,
     ChainId.ArbitrumOne,
     ChainId.ArbitrumNova,
-    ChainId.InSpace
+    ChainId.Inspace
   ]
 
   return isNetwork(chainId).isTestnet

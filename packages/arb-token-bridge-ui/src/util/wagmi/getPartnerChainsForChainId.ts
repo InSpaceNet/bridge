@@ -14,7 +14,7 @@ import {
   chainToWagmiChain,
   stylusTestnet,
   xaiTestnet,
-  inSpace
+  inspace
 } from './wagmiAdditionalNetworks'
 
 export function getPartnerChainsForChainId(chainId: number): Chain[] {
@@ -43,7 +43,7 @@ export function getPartnerChainsForChainId(chainId: number): Chain[] {
       return [arbitrumSepolia]
 
     case ChainId.ArbitrumOne:
-      return [mainnet, inSpace, ...customArbitrumOneChains]
+      return [mainnet, inspace, ...customArbitrumOneChains]
 
     case ChainId.ArbitrumNova:
       return [mainnet, ...customArbitrumNovaChains]
@@ -60,7 +60,7 @@ export function getPartnerChainsForChainId(chainId: number): Chain[] {
     case ChainId.XaiTestnet:
       return [arbitrumGoerli]
 
-    case ChainId.InSpace:
+    case ChainId.Inspace:
       return [arbitrumOne]
 
     default:
