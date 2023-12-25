@@ -173,10 +173,10 @@ function NetworkContainer({
       isOrbitChain,
       isXaiTestnet,
       isStylusTestnet,
-      isInSpace
+      isInspace
     } = isNetwork(network.id)
 
-    if (isInSpace) {
+    if (isInspace) {
       return {
         backgroundImage: `url('/images/InspaceLogo.png')`,
         backgroundClassName: 'bg-xai-dark'

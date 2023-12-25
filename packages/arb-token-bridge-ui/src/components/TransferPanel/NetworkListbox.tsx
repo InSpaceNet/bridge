@@ -29,14 +29,14 @@ export function NetworkListbox({
       isOrbitChain,
       isXaiTestnet,
       isStylusTestnet,
-      isInSpace
+      isInspace
     } = isNetwork(value.id)
 
     if (isXaiTestnet) {
       return 'bg-xai-primary'
     }
 
-    if (isInSpace) {
+    if (isInspace) {
       return 'bg-eth-primary'
     }
 
