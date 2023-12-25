@@ -7,13 +7,14 @@ import {
   arbitrumGoerli
 } from 'wagmi/chains'
 
-import { ChainId, getCustomChainsFromLocalStorage } from '../networks'
+import { ChainId, getCustomChainsFromLocalStorage, inspace } from '../networks'
 import {
   arbitrumNova,
   arbitrumSepolia,
   chainToWagmiChain,
   stylusTestnet,
-  xaiTestnet
+  xaiTestnet,
+  inSpace
 } from './wagmiAdditionalNetworks'
 
 export function getPartnerChainsForChainId(chainId: number): Chain[] {
@@ -42,7 +43,7 @@ export function getPartnerChainsForChainId(chainId: number): Chain[] {
       return [arbitrumSepolia]
 
     case ChainId.ArbitrumOne:
-      return [mainnet, ...customArbitrumOneChains]
+      return [mainnet, inSpace, ...customArbitrumOneChains]
 
     case ChainId.ArbitrumNova:
       return [mainnet, ...customArbitrumNovaChains]
@@ -58,6 +59,9 @@ export function getPartnerChainsForChainId(chainId: number): Chain[] {
 
     case ChainId.XaiTestnet:
       return [arbitrumGoerli]
+
+    case ChainId.InSpace:
+      return [arbitrumOne]
 
     default:
       const customArbitrumGoerliChainsIds = customArbitrumGoerliChains.map(

@@ -260,7 +260,13 @@ export function NetworksAndSignersProvider(
     const providerSupportedL2 = chainIdToDefaultL2ChainId[providerChainId]!
 
     // Case 1: Connected to an Orbit chain & Arbitrum is 'preferredL2ChainId'. Need to set 'preferredL2ChainId' to an Orbit chain.
+    console.debug('fk, selected chain', selectedL2ChainId)
+    console.debug('fk, selected is arbitrum', isSelectedL2ChainArbitrum)
+    console.debug('fk, providerSupportedl id', providerSupportedL2)
+    console.debug('is connected to orbit chain?', isConnectedToOrbitChain)
+    console.debug('provider supported l2', providerSupportedL2)
     if (isConnectedToOrbitChain && isSelectedL2ChainArbitrum) {
+      console.debug('case 1!!!!!!!!!')
       if (thisInvocation !== invocationCounter.current) {
         // don't apply if the iteration is not the latest
         return
@@ -272,6 +278,7 @@ export function NetworksAndSignersProvider(
     // Case 2: use a default L2 based on the connected provider chainid
     _selectedL2ChainId = _selectedL2ChainId || providerSupportedL2[0]
     if (typeof _selectedL2ChainId === 'undefined') {
+      console.debug('case 2!!!!!!!!!!')
       console.error(`Unknown provider chainId: ${providerChainId}`)
       setResult({
         status: UseNetworksAndSignersStatus.NOT_SUPPORTED,
@@ -283,6 +290,7 @@ export function NetworksAndSignersProvider(
     // Case 3: L2 is not supported by provider
     if (!providerSupportedL2.includes(_selectedL2ChainId)) {
       // remove the l2chainId, keeping the rest of the params intact
+      console.debug('case 3!!!!!!!!!!!')
       setQueryParams({
         l2ChainId: undefined
       })
@@ -291,16 +299,23 @@ export function NetworksAndSignersProvider(
     }
 
     // Case 4
+    console.log('before case 4, provider', provider as Web3Provider)
+    //let parent = await getParentChain(provider as Web3Provider)
+    //console.log("before case 4, get parent", parent)
+
     getParentChain(provider as Web3Provider)
       .then(async parentChain => {
+        console.log('case 4!!!!!!!!!!!!!!')
         const isParentChainArbitrum = isNetwork(parentChain.chainID).isArbitrum
+        console.log('case 4 is parnt chain arbitrum?', isParentChainArbitrum)
+        console.log('case 4 parent chain', parentChain.chainID)
+        console.log('case 4 provider', provider)
 
         // There's no preferred L2 set, but Arbitrum is the ParentChain.
         if (isParentChainArbitrum && !selectedL2ChainId) {
           // By default, we want Arbitrum to be paired with Ethereum instead of an Orbit chain in our UI.
           // This is so we default users to their preferred case: Withdrawal from Arbitrum to Ethereum.
           // However, the current flow would set it to Arbitrum's partner Orbit chain.
-
           // We jump to 'getChain'. This means Arbitrum will be considered an L2 and paired with Ethereum.
           throw new Error()
         }
@@ -361,6 +376,7 @@ export function NetworksAndSignersProvider(
 
         // show a toast message if connecting to the valid network resulted in failure
         if (_selectedL2ChainId && error && error.event === 'noNetwork') {
+          console.error('fuck here')
           errorToast(
             `Failed to connect to ${getNetworkName(_selectedL2ChainId)}.`
           )
@@ -369,11 +385,12 @@ export function NetworksAndSignersProvider(
         getChain(provider as Web3Provider)
           .then(async chain => {
             const parentChainId = chain.partnerChainID
+            console.debug('parent!', parentChainId)
             const parentProvider = new StaticJsonRpcProvider(
               rpcURLs[parentChainId]
             )
             const parentChain = await getParentChain(parentProvider)
-
+            console.debug('parent chain!', parentChain, parentProvider)
             const chainProvider = new StaticJsonRpcProvider(
               rpcURLs[chain.chainID]
             )

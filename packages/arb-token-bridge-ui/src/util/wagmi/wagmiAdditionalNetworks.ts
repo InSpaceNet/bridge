@@ -94,6 +94,27 @@ export const xaiTestnet: Chain = {
   }
 }
 
+export const inSpace: Chain = {
+  id: ChainId.InSpace,
+  name: 'InSpace Network',
+  network: 'inspace-network',
+  nativeCurrency: ether,
+  rpcUrls: {
+    default: {
+      http: [rpcURLs[ChainId.InSpace]!]
+    },
+    public: {
+      http: [rpcURLs[ChainId.InSpace]!]
+    }
+  },
+  blockExplorers: {
+    default: {
+      name: 'Inspace scan',
+      url: 'https://scan.inspace.network'
+    }
+  }
+}
+
 export const stylusTestnet: Chain = {
   id: ChainId.StylusTestnet,
   name: 'Stylus Testnet',

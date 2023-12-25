@@ -16,7 +16,8 @@ import {
   xaiTestnet,
   stylusTestnet,
   localL1Network as local,
-  localL2Network as arbitrumLocal
+  localL2Network as arbitrumLocal,
+  inSpace
 } from '../util/wagmi/wagmiAdditionalNetworks'
 
 import { getPartnerChainsForChainId } from '../util/wagmi/getPartnerChainsForChainId'
@@ -37,6 +38,8 @@ function getChainByChainId(chainId: ChainId): Chain {
     // L3
     [ChainId.XaiTestnet]: xaiTestnet,
     [ChainId.StylusTestnet]: stylusTestnet,
+    [ChainId.InSpace]: inSpace,
+
     // E2E
     [ChainId.Local]: local,
     [ChainId.ArbitrumLocal]: arbitrumLocal

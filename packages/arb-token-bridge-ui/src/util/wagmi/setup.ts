@@ -6,6 +6,7 @@ import { trustWallet } from '@rainbow-me/rainbowkit/wallets'
 import { infuraProvider } from 'wagmi/providers/infura'
 
 import {
+  inSpace,
   sepolia,
   arbitrumNova,
   arbitrumSepolia,
@@ -38,6 +39,7 @@ const chainList = isTestingEnvironment
       // Orbit chains
       xaiTestnet,
       stylusTestnet,
+      inSpace,
       // add local environments during testing
       local,
       arbitrumLocal,
@@ -54,6 +56,7 @@ const chainList = isTestingEnvironment
       arbitrumSepolia,
       xaiTestnet,
       stylusTestnet,
+      inSpace,
       ...customChains
     ]
 
@@ -75,7 +78,8 @@ enum TargetChainKey {
   Goerli = 'goerli',
   ArbitrumGoerli = 'arbitrum-goerli',
   Sepolia = 'sepolia',
-  ArbitrumSepolia = 'arbitrum-sepolia'
+  ArbitrumSepolia = 'arbitrum-sepolia',
+  InSpace = 'inspace-network'
 }
 
 function sanitizeTargetChainKey(targetChainKey: string | null): TargetChainKey {
@@ -114,6 +118,8 @@ function getChainId(targetChainKey: TargetChainKey): number {
 
     case TargetChainKey.ArbitrumSepolia:
       return ChainId.ArbitrumSepolia
+    case TargetChainKey.InSpace:
+      return ChainId.InSpace
   }
 }
 

@@ -268,7 +268,6 @@ const Injector = ({ children }: { children: React.ReactNode }): JSX.Element => {
 
 function NetworkReady({ children }: { children: React.ReactNode }) {
   const [{ l2ChainId }] = useArbQueryParams()
-
   return (
     <NetworksAndSignersProvider
       selectedL2ChainId={l2ChainId || undefined}
