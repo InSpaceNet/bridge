@@ -599,7 +599,7 @@ export function getNetworkLogo(
       return '/images/StylusLogo.svg'
 
     case ChainId.InSpace:
-      return '/images/InspaceLogo.png'
+      return '/images/InspaceLogo.svg'
 
     default:
       const { isArbitrum, isOrbitChain } = isNetwork(chainId)
