@@ -78,8 +78,7 @@ enum TargetChainKey {
   Goerli = 'goerli',
   ArbitrumGoerli = 'arbitrum-goerli',
   Sepolia = 'sepolia',
-  ArbitrumSepolia = 'arbitrum-sepolia',
-  Inspace = 'inspace-network'
+  ArbitrumSepolia = 'arbitrum-sepolia'
 }
 
 function sanitizeTargetChainKey(targetChainKey: string | null): TargetChainKey {
@@ -118,8 +117,6 @@ function getChainId(targetChainKey: TargetChainKey): number {
 
     case TargetChainKey.ArbitrumSepolia:
       return ChainId.ArbitrumSepolia
-    case TargetChainKey.Inspace:
-      return ChainId.Inspace
   }
 }
 

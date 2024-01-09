@@ -99,6 +99,7 @@ function isSupportedChainId(chainId: ChainId | undefined): chainId is ChainId {
     arbitrumSepolia.id,
     stylusTestnet.id,
     xaiTestnet.id,
+    inspace.id,
     arbitrumLocal.id,
     local.id,
     ...customChainIds
