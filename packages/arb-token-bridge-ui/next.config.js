@@ -7,5 +7,24 @@
 module.exports = {
   distDir: 'build',
   productionBrowserSourceMaps: true,
-  reactStrictMode: true
+  reactStrictMode: true,
+  images: {
+    unoptimized: true
+  },
+  webpack: (config, { isServer, dev }) => {
+    if (dev && !isServer) {
+      config.watchOptions = {
+        ...config.watchOptions,
+        ignored: /node_modules([\\]+|\/)+(?!@arbitrum\/sdk\/dist\/)/
+      }
+
+      config.module.rules.push({
+        test: /\.js$/,
+        include: /node_modules\/@arbitrum\/sdk\/dist/,
+        use: ['babel-loader']
+      })
+    }
+
+    return config
+  }
 }

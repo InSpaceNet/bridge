@@ -237,7 +237,6 @@ export function NetworksAndSignersProvider(
     const chainNotSupported = !(providerChainId in chainIdToDefaultL2ChainId)
 
     if (chainNotSupported) {
-      console.error(`Chain ${providerChainId} not supported`)
       if (thisInvocation !== invocationCounter.current) {
         // don't apply if the iteration is not the latest
         return
@@ -272,7 +271,6 @@ export function NetworksAndSignersProvider(
     // Case 2: use a default L2 based on the connected provider chainid
     _selectedL2ChainId = _selectedL2ChainId || providerSupportedL2[0]
     if (typeof _selectedL2ChainId === 'undefined') {
-      console.error(`Unknown provider chainId: ${providerChainId}`)
       setResult({
         status: UseNetworksAndSignersStatus.NOT_SUPPORTED,
         chainId: providerChainId
@@ -300,7 +298,6 @@ export function NetworksAndSignersProvider(
           // By default, we want Arbitrum to be paired with Ethereum instead of an Orbit chain in our UI.
           // This is so we default users to their preferred case: Withdrawal from Arbitrum to Ethereum.
           // However, the current flow would set it to Arbitrum's partner Orbit chain.
-
           // We jump to 'getChain'. This means Arbitrum will be considered an L2 and paired with Ethereum.
           throw new Error()
         }
@@ -373,7 +370,6 @@ export function NetworksAndSignersProvider(
               rpcURLs[parentChainId]
             )
             const parentChain = await getParentChain(parentProvider)
-
             const chainProvider = new StaticJsonRpcProvider(
               rpcURLs[chain.chainID]
             )

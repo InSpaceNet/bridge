@@ -8,6 +8,7 @@
   "scripts": {
     "dev": "yarn workspace arb-token-bridge-ui dev",
     "build": "yarn workspace arb-token-bridge-ui build",
+    "export": "yarn workspace arb-token-bridge-ui export",
     "start": "yarn build && yarn workspace arb-token-bridge-ui start",
     "audit:ci": "audit-ci --config ./audit-ci.jsonc",
     "test:ci": "yarn workspace arb-token-bridge-ui test:ci",
@@ -27,5 +28,8 @@
   ],
   "devDependencies": {
     "audit-ci": "^6.3.0"
+  },
+  "dependencies": {
+    "babel-loader": "^9.1.3"
   }
 }

@@ -55,6 +55,7 @@
     "postinstall": "patch-package",
     "build": "next build",
     "start": "next start",
+    "export": "next export",
     "test": "jest --watch",
     "test:ci": "jest --ci",
     "lint": "tsc && eslint 'src/**/*.{js,ts,tsx}'",
